@@ -26,4 +26,8 @@ public class NaivePlayer extends Player {
         List<Move> moves = b.getMovesFor(getColor());
         return moves.get(random.nextInt(moves.size()));
     }
+    public void alpha_beta()
+    {
+
+    }
 }
