@@ -4,12 +4,14 @@
  */
 package put.ai.games.naiveplayer;
 
-import java.util.List;
-import java.util.Random;
 import put.ai.games.game.Board;
 import put.ai.games.game.Move;
 import put.ai.games.game.Player;
+import put.ai.games.game.moves.impl.MoveMoveImpl;
 
+import java.util.Collections;
+import java.util.List;
+import java.util.Random;
 public class NaivePlayer extends Player {
 
     private Random random = new Random(0xdeadbeef);
@@ -24,30 +26,48 @@ public class NaivePlayer extends Player {
     @Override
     public Move nextMove(Board b) {
         List<Move> moves = b.getMovesFor(getColor());
-        return moves.get(random.nextInt(moves.size()));
-    }
-    public void alpha_beta(Board b)
-    {
-        if (b.getMovesFor(getColor()))
-        {
+        //random.nextInt(moves.size())
+        Color color = getColor();
+//        for (Move move : moves) {
+//            if (move instanceof MoveMoveImpl) {
+//                MoveMoveImpl ruch = (MoveMoveImpl) move;
+//
+//            }
+//        }
+        //int max = Collections.max(moves);
+        //int index = moves.indexOf(max);
 
+        MoveMoveImpl ruch;
+        for (Move move : moves)
+        {
+            if (color == Color.PLAYER1)
+            {
+                return moves.get(moves.size()-1);
+            }
         }
+        return moves.get(moves.size()-1);
     }
-    /*
-    funkcja alfabeta(węzeł, głębokość, α, β)
-    jeżeli węzeł jest końcowy lub głębokość = 0
-        zwróć wartość heurystyczną węzła
-    jeżeli przeciwnik ma zagrać w węźle
-        dla każdego potomka węzła
-            β := min(β, alfabeta(potomek, głębokość-1, α, β))
-            jeżeli α≥β
-                przerwij przeszukiwanie  {odcinamy gałąź Alfa}
-        zwróć β
-    w przeciwnym przypadku {my mamy zagrać w węźle}
-        dla każdego potomka węzła
-            α := max(α, alfabeta(potomek, głębokość-1, α, β))
-            jeżeli α≥β
-                przerwij przeszukiwanie  {odcinamy gałąź Beta}
-        zwróć α
-     */
+//    private int alpha_beta(int[] piles, int begin, int end, int alpha, int beta, boolean maximizing)
+//    {
+//
+//        if (begin > end) return 0;
+//
+//        if (maximizing) {
+//            int val = Integer.MIN_VALUE;
+//            val = Math.max(val, alpha_beta(piles, begin + 1, end, alpha, beta, false) + piles[begin]);
+//            alpha = Math.max(alpha, val);
+//            if (alpha >= beta) return val;
+//
+//            val = Math.max(val, alpha_beta(piles, begin, end - 1, alpha, beta, false) + piles[end]);
+//            return val;
+//        } else {
+//            int val = Integer.MAX_VALUE;
+//            val = Math.min(val, alpha_beta(piles, begin + 1, end, alpha, beta, true) - piles[begin]);
+//            beta = Math.min(beta, val);
+//            if (alpha >= beta) return val;
+//
+//            val = Math.min(val, alpha_beta(piles, begin, end - 1, alpha, beta, true) - piles[end]);
+//            return val;
+//        }
+//    }
 }
