@@ -7,7 +7,7 @@ package put.ai.games.naiveplayer;
 import put.ai.games.game.Board;
 import put.ai.games.game.Move;
 import put.ai.games.game.Player;
-import put.ai.games.game.moves.impl.MoveMoveImpl;
+//import put.ai.games.game.moves.impl.MoveMoveImpl;
 
 import java.util.Collections;
 import java.util.List;
@@ -37,7 +37,7 @@ public class NaivePlayer extends Player {
         //int max = Collections.max(moves);
         //int index = moves.indexOf(max);
 
-        MoveMoveImpl ruch;
+        //MoveMoveImpl ruch;
         for (Move move : moves)
         {
             if (color == Color.PLAYER1)
